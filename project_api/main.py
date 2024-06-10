@@ -161,7 +161,7 @@ async def get_distritos_by_UF_id(id_UF: int):
         raise HTTPException(status_code=404, detail="Distritos não encontrados")
 
 #Filtro: por microrregião, UF sigla
-@app.get("/localidades/distritos//mesorregiao/UF/sigla/{sigla_UF}", tags=["unidades federativas por microrregião"])
+@app.get("/localidades/distritos/mesorregiao/UF/sigla/{sigla_UF}", tags=["unidades federativas por microrregião"])
 async def get_distritos_by_UF_sigla(sigla_UF: str):
     distritos = await fetch_distritos()
 
