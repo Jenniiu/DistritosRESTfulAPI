@@ -67,10 +67,10 @@ async def get_localidades_by_distritos(
 
 #Filtro: por município id
 @app.get("/localidades/distritos/municipio/{id_municipio}", tags=["municípios"])
-async def get_distritos_by_municipio(id_municipio: int):
+async def get_distritos_by_municipio_id(id_municipio: int):
     distritos = await fetch_distritos()
     if distritos:
-        distritos_encontrados = [distrito for distrito in distritos if distrito["municipio"]["id"] == id_municipio]
+        distritos_encontrados = [distrito for distrito in distritos if distrito.get("municipio", {}).get("id") == id_municipio]
         if distritos_encontrados:
             return distritos_encontrados
         else:
@@ -161,7 +161,7 @@ async def get_distritos_by_UF_id(id_UF: int):
         raise HTTPException(status_code=404, detail="Distritos não encontrados")
 
 #Filtro: por microrregião, UF sigla
-@app.get("/localidades/distritos//mesorregiao/UF/sigla/{sigla_UF}", tags=["unidades federativas por microrregião"])
+@app.get("/localidades/distritos/mesorregiao/UF/sigla/{sigla_UF}", tags=["unidades federativas por microrregião"])
 async def get_distritos_by_UF_sigla(sigla_UF: str):
     distritos = await fetch_distritos()
 
