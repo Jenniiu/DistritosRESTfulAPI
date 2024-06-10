@@ -333,7 +333,7 @@ async def get_distritos_by_regiao_id_RI(id_regiao_RI: int):
     distritos = await fetch_distritos()
 
     if distritos:
-        distritos_encontrados = [distrito for distrito in distritos if distrito.get("municipio", {}).get("regiao-imediata", {}).get("regiao-intermediaria", {}).get("UF", {}).get("regiao", {}).get("regiao", {}).get("id") == id_regiao_RI]        
+        distritos_encontrados = [distrito for distrito in distritos if distrito.get("municipio", {}).get("regiao-imediata", {}).get("regiao-intermediaria", {}).get("UF", {}).get("regiao", {}).get("id") == id_regiao_RI]        
         if distritos_encontrados:
             return distritos_encontrados
         else:
